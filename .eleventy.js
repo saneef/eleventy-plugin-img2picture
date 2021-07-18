@@ -1,4 +1,4 @@
-const img2picture = require("./img2picture.js");
+const img2picture = require("./lib/img2picture.js");
 
 /** @typedef { import('./img2picture').Img2PictureOptions } Img2PictureOptions */
 

@@ -3,7 +3,7 @@ const test = require("ava");
 const { promisify } = require("util");
 const rimraf = promisify(require("rimraf"));
 
-const img2picture = require("../img2picture.js");
+const img2picture = require("../lib/img2picture.js");
 
 const sourcePath = path.join(__dirname, "fixtures");
 const outputBase = path.join(__dirname, "output", "ignores");
