@@ -156,7 +156,7 @@ async function generateImage(attrs, options) {
     filenameFormat: filenameFormat || filenameFormatter,
     widths,
     urlPath,
-    outputDir: path.join(output, urlPath),
+    outputDir: output,
     sharpOptions,
     sharpWebpOptions,
     sharpPngOptions,
