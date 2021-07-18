@@ -27,6 +27,7 @@
     "eslint-config-xo-space": "^0.28.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
+    "image-size": "^0.9.7",
     "lint-staged": "^11.0.1",
     "nyc": "^15.1.0",
     "prettier": "^2.3.2",

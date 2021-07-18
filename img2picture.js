@@ -61,7 +61,7 @@ const defaultOptions = {
 function cleanAttributes(obj) {
   const cleanedObj = { ...obj };
 
-  delete cleanedObj["data-respimg"];
+  delete cleanedObj["data-img2picture-ignore"];
   delete cleanedObj.src;
   delete cleanedObj.class;
   delete cleanedObj.width;
@@ -180,7 +180,7 @@ async function replaceImages(content, options) {
   const $ = cheerio.load(content);
   const images = $("img")
     .not("picture img") // Ignore images wrapped in <picture>
-    .not("[data-respimg]") // Ignore excluded images
+    .not("[data-img2picture-ignore]") // Ignore excluded images
     .filter((i, el) => {
       const src = $(el).attr("src");
       return isLocalPath(src) && isAllowedExtension(src, extensions);
