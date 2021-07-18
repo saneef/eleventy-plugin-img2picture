@@ -1,0 +1,39 @@
+{
+  "name": "eleventy-plugin-img2picture",
+  "version": "0.0.1",
+  "description": "Eleventy plugin to replace <img> using <picture> with resized and optimized images.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "nyc ava -v --color",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "responsive-images",
+    "images",
+    "eleventy",
+    "11ty",
+    "eleventy-plugin"
+  ],
+  "author": "Saneef Ansari <hello@saneef.com> (https://saneef.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy-img": "^0.9.0",
+    "cheerio": "^1.0.0-rc.10"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-xo-space": "^0.28.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.1",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,md,json}": "prettier --write"
+  }
+}
