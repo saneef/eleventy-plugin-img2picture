@@ -16,7 +16,11 @@ function isLocalPath(path) {
  * @return     {boolean}  True if allowed extension, False otherwise.
  */
 function isAllowedExtension(path, extensions) {
-  return Boolean(extensions.find((ext) => path.endsWith(ext)));
+  const lowerCaseExtensions = extensions.map((x) => x.toLowerCase());
+
+  return Boolean(
+    lowerCaseExtensions.find((ext) => path.toLowerCase().endsWith(ext))
+  );
 }
 
 /**
