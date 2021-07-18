@@ -37,7 +37,7 @@ const {
 /** @type {Img2PictureOptions} */
 const defaultOptions = {
   input: "",
-  output: "",
+  output: "_site",
   urlPath: "",
   extensions: ["jpg", "png", "jpeg"],
   formats: ["avif", "webp", "jpeg"],
