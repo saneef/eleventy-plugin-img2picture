@@ -22,7 +22,7 @@ test("Don't optimise in non-HTML files", async (t) => {
     input: sourcePath,
     output: outputBase,
   });
-  const result = await transformer.bind({ outputPath })(input);
+  const result = await transformer(input, outputPath);
   t.is(result, output);
 });
 
@@ -36,7 +36,7 @@ test("Don't optimise <img> tag with data-img2picture-ignore", async (t) => {
     input: sourcePath,
     output: outputBase,
   });
-  const result = await transformer.bind({ outputPath })(input);
+  const result = await transformer(input, outputPath);
   t.is(result, output);
 });
 
@@ -48,7 +48,7 @@ test("Don't optimise SVG", async (t) => {
     input: sourcePath,
     output: outputBase,
   });
-  const result = await transformer.bind({ outputPath })(input);
+  const result = await transformer(input, outputPath);
   t.is(result, output);
 });
 
@@ -60,6 +60,6 @@ test("Don't optimise GIF", async (t) => {
     input: sourcePath,
     output: outputBase,
   });
-  const result = await transformer.bind({ outputPath })(input);
+  const result = await transformer(input, outputPath);
   t.is(result, output);
 });

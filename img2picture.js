@@ -212,8 +212,7 @@ function img2picture(userOptions) {
   /** @type {Img2PictureOptions} */
   const options = { ...defaultOptions, ...(userOptions || {}) };
 
-  return async function (content) {
-    const { outputPath } = this;
+  return async function (content, outputPath) {
     if (outputPath && outputPath.endsWith(".html")) {
       return replaceImages(content, options);
     }

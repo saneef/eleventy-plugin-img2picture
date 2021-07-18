@@ -23,7 +23,7 @@ test("Optimizes JPG image, puts them in <picture>, and generates AVIF, WebP, JPE
     input: sourcePath,
     output: outputBase,
   });
-  const result = await transformer.bind({ outputPath })(input);
+  const result = await transformer(input, outputPath);
   t.is(result, output);
 
   const { width: smallestWebPWidth } = imageSize(
