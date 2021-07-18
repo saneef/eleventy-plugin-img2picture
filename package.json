@@ -5,7 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "lint": "eslint .eleventy.js lib/**.js tests/**.js",
-    "test": "nyc ava -v --color",
+    "test": "nyc ava --timeout=1m -v --color",
     "prepare": "husky install"
   },
   "keywords": [
