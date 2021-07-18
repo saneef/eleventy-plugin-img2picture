@@ -109,13 +109,13 @@ function generatePicture(metadata, attrs, options) {
 
   const lowsrc = metadata.jpeg[0];
   const highsrc = metadata.jpeg[metadata.jpeg.length - 1];
-  return `<picture${objectToAttributes(pictureAttrs)}>${Object.values(
-    metadata
-  ).map((imageFormat) => {
-    return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
-      .map((entry) => entry.srcset)
-      .join(", ")}" sizes="${sizes}">`;
-  })}<img
+  return `<picture${objectToAttributes(pictureAttrs)}>${Object.values(metadata)
+    .map((imageFormat) => {
+      return `<source type="${imageFormat[0].sourceType}" srcset="${imageFormat
+        .map((entry) => entry.srcset)
+        .join(", ")}" sizes="${sizes}">`;
+    })
+    .join("")}<img
         src="${lowsrc.url}"
         width="${highsrc.width}"
         height="${highsrc.height}"
