@@ -11,7 +11,7 @@ const outputBase = path.join(__dirname, "output", "ignores");
 test.before("Cleanup Output Images", async () => rimraf(outputBase));
 test.after.always("Cleanup Output Images", async () => rimraf(outputBase));
 
-test("Don't optimise in non-HTML files", async (t) => {
+test("Don't optimise image in a file other than HTML", async (t) => {
   const input =
     '<img src="/images/sunset-by-bruno-scramgnon.jpg" alt="Sunset">';
   const outputPath = "file.xml";
