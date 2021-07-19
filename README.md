@@ -4,6 +4,11 @@ Eleventy plugin to replace `<img>` using `<picture>` with resized and optimized 
 
 This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/chromeos/static-site-scaffold-modules/tree/main/modules/eleventy-plugin-local-respimg) by [Sam Richard](https://twitter.com/Snugug/).
 
+## Features
+
+* Drop-in plugin to replace all `<img>` in your website without shortcodes
+* [Ignore image using data attribute](#ignore-images)
+
 ## Supported Image Formats
 
 This plugin uses [`eleventy-img`](https://www.11ty.dev/docs/plugins/image/) to optimize, and generate different sizes and formats of images. All [formats supported](https://www.11ty.dev/docs/plugins/image/#output-formats) by `eleventy-img` are supported by `eleventy-plugin-img2picture`.
@@ -18,12 +23,12 @@ module.exports = function (eleventyConfig) {
   // The plugin works fine on development. Just that, your Eleventy builds will be quite slow.
   if (process.env.NODE_ENV === "production") {
     eleventyConfig.addPlugin(img2picture, {
-      eleventyInputDir: "", // Eleventy input folder.
-      imagesOutputDir: "_site", // Output folder for optimized images.
+      eleventyInputDir: "", // Eleventy input folder. 🚨 Required
+      imagesOutputDir: "_site", // Output folder for optimized images. 🚨 Required
       // URL prefix for images src URLS.
       // It should match with path suffix in `imagesOutputDir`.
       // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
-      urlPath: "",
+      urlPath: "", 🚨 Required
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
       formats: ["avif", "webp", "jpeg"], // Formats to be generated
       sizes: "100vw", // Default image `sizes` attribute
