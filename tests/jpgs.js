@@ -7,8 +7,8 @@ const imageSize = require("image-size");
 const img2picture = require("../lib/img2picture.js");
 const { filenameFormat } = require("./utils.js");
 
-const sourcePath = path.join(__dirname, "fixtures");
-const outputBase = path.join(__dirname, "output", "jpgs");
+const sourcePath = path.join("tests/fixtures");
+const outputBase = path.join("tests/output/jpgs");
 
 test.before("Cleanup Output Images", async () => rimraf(outputBase));
 test.after.always("Cleanup Output Images", async () => rimraf(outputBase));
