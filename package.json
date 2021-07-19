@@ -8,7 +8,7 @@
     "url": "git+https://github.com:saneef/eleventy-plugin-img2picture.git"
   },
   "scripts": {
-    "lint": "eslint .eleventy.js lib/**.js tests/**.js",
+    "lint": "eslint lib/**.js tests/**.js",
     "test": "nyc ava --timeout=1m -v --color",
     "prepare": "husky install"
   },
