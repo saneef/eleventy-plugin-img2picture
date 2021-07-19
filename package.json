@@ -37,5 +37,11 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,md,json}": "prettier --write"
+  },
+  "ava": {
+    "files": [
+      "tests/**/*",
+      "!tests/utils.js"
+    ]
   }
 }
