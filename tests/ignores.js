@@ -19,8 +19,8 @@ test("Don't optimise image in a file other than HTML", async (t) => {
     '<img src="/images/sunset-by-bruno-scramgnon.jpg" alt="Sunset">';
 
   const transformer = img2picture({
-    input: sourcePath,
-    output: outputBase,
+    eleventyInputDir: sourcePath,
+    imagesOutputDir: outputBase,
   });
   const result = await transformer(input, outputPath);
   t.is(result, output);
@@ -33,8 +33,8 @@ test("Don't optimise <img> tag with data-img2picture-ignore", async (t) => {
   const output =
     '<img data-img2picture-ignore="true" src="/images/sunset-by-bruno-scramgnon.jpg" alt="Sunset">';
   const transformer = img2picture({
-    input: sourcePath,
-    output: outputBase,
+    eleventyInputDir: sourcePath,
+    imagesOutputDir: outputBase,
   });
   const result = await transformer(input, outputPath);
   t.is(result, output);
@@ -45,8 +45,8 @@ test("Don't optimise SVG", async (t) => {
   const outputPath = "file.html";
   const output = '<img src="/images/nothing.svg" alt="Nothing">';
   const transformer = img2picture({
-    input: sourcePath,
-    output: outputBase,
+    eleventyInputDir: sourcePath,
+    imagesOutputDir: outputBase,
   });
   const result = await transformer(input, outputPath);
   t.is(result, output);
@@ -57,8 +57,8 @@ test("Don't optimise GIF", async (t) => {
   const outputPath = "file.html";
   const output = '<img src="/images/nothing.gif" alt="Nothing">';
   const transformer = img2picture({
-    input: sourcePath,
-    output: outputBase,
+    eleventyInputDir: sourcePath,
+    imagesOutputDir: outputBase,
   });
   const result = await transformer(input, outputPath);
   t.is(result, output);

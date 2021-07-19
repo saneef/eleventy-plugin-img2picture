@@ -18,11 +18,12 @@ module.exports = function (eleventyConfig) {
   // The plugin works fine on development. Just that, your Eleventy builds will be quite slow.
   if (process.env.NODE_ENV === "production") {
     eleventyConfig.addPlugin(img2picture, {
-      input: "src", // Eleventy input folder. default: ""
-      output: "_site/images", // Output folder for optimized images. default: "_site"
-      // URL prefix for images src URLS. default: "".
-      // It should match with path suffix in `output`.
-      urlPath: "/images/",
+      eleventyInputDir: "", // Eleventy input folder.
+      imagesOutputDir: "_site", // Output folder for optimized images.
+      // URL prefix for images src URLS.
+      // It should match with path suffix in `imagesOutputDir`.
+      // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
+      urlPath: "",
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
       formats: ["avif", "webp", "jpeg"], // Formats to be generated
       sizes: "100vw", // Default image `sizes` attribute
