@@ -3,9 +3,13 @@
   "version": "0.0.4",
   "description": "Eleventy plugin to replace <img> using <picture> with resized and optimized images.",
   "main": ".eleventy.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:saneef/eleventy-plugin-img2picture.git"
+  },
   "scripts": {
-    "lint": "eslint .eleventy.js lib/**.js tests/**.js",
-    "test": "nyc ava -v --color",
+    "lint": "eslint lib/**.js tests/**.js",
+    "test": "nyc ava --timeout=1m -v --color",
     "prepare": "husky install"
   },
   "keywords": [
@@ -37,5 +41,11 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,md,json}": "prettier --write"
+  },
+  "ava": {
+    "files": [
+      "tests/**/*",
+      "!tests/utils.js"
+    ]
   }
 }
