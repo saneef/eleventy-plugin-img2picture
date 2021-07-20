@@ -30,7 +30,10 @@ module.exports = function (eleventyConfig) {
       // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
       urlPath: "", 🚨 Required
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
-      formats: ["avif", "webp", "jpeg"], // Formats to be generated
+      // Formats to be generated.
+      // ⚠️ The <source> tags are ordered based on the order of formats in this array.
+      // Keep the most optimised first, and least in the end.
+      formats: ["avif", "webp", "jpeg"],
       sizes: "100vw", // Default image `sizes` attribute
       minWidth: 150, // Minimum width to resize an image to
       maxWidth: 1500, // Maximum width to resize an image to
