@@ -6,8 +6,8 @@ This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/ch
 
 ## Features
 
-* Drop-in plugin to replace all `<img>` in your website without shortcodes
-* [Ignore image using data attribute](#ignore-images)
+- Drop-in plugin to replace all `<img>` in your website without shortcodes
+- [Ignore image using data attribute](#ignore-images)
 
 ## Supported Image Formats
 
@@ -64,6 +64,83 @@ Images with `data-img2picture-ignore="true"` or `data-img2picture-ignore` will b
   src="/images/sunset-by-bruno-scramgnon.jpg"
   alt="Sunset"
 />
+```
+
+### Attributes on `<img>`
+
+- `class` attribute on `<img>` will be moved to `<picture>`
+- `src`, `width`, and `height` attributes will be populated based optimized image size.
+- All other attributes on `<img>` will be retained. This let you set custom `sizes`, like `<img src="..." sizes="(min-width: 60em) 75vw, 100vw" alt="..." />`
+
+Example:
+
+```html
+<img
+  class="w-full"
+  src="shapes.png"
+  alt="Shapes"
+  data-variant="bleed"
+  loading="eager"
+  decoding="auto"
+/>
+```
+
+...will generate:
+
+```html
+<picture class="w-full"
+  ><source
+    type="image/avif"
+    srcset="
+      shapes-150w.avif   150w,
+      shapes-300w.avif   300w,
+      shapes-450w.avif   450w,
+      shapes-600w.avif   600w,
+      shapes-750w.avif   750w,
+      shapes-900w.avif   900w,
+      shapes-1050w.avif 1050w,
+      shapes-1200w.avif 1200w,
+      shapes-1350w.avif 1350w
+    "
+    sizes="100vw" />
+  <source
+    type="image/webp"
+    srcset="
+      shapes-150w.webp   150w,
+      shapes-300w.webp   300w,
+      shapes-450w.webp   450w,
+      shapes-600w.webp   600w,
+      shapes-750w.webp   750w,
+      shapes-900w.webp   900w,
+      shapes-1050w.webp 1050w,
+      shapes-1200w.webp 1200w,
+      shapes-1350w.webp 1350w
+    "
+    sizes="100vw" />
+  <source
+    type="image/jpeg"
+    srcset="
+      shapes-150w.jpeg   150w,
+      shapes-300w.jpeg   300w,
+      shapes-450w.jpeg   450w,
+      shapes-600w.jpeg   600w,
+      shapes-750w.jpeg   750w,
+      shapes-900w.jpeg   900w,
+      shapes-1050w.jpeg 1050w,
+      shapes-1200w.jpeg 1200w,
+      shapes-1350w.jpeg 1350w
+    "
+    sizes="100vw" />
+  <img
+    src="shapes-150w.jpeg"
+    width="1350"
+    height="1350"
+    alt="Shapes"
+    data-variant="bleed"
+    sizes="100vw"
+    loading="eager"
+    decoding="auto"
+/></picture>
 ```
 
 ## Why is this plugin different from others?
