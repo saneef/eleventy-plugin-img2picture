@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+          lfs: true
+      - name: Checkout LFS objects
+        run: git lfs checkout
       - run: npm install
       - run: npm run lint
       - run: npm test
