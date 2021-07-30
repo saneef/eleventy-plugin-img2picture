@@ -32,7 +32,7 @@ module.exports = function (eleventyConfig) {
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
       // Formats to be generated.
       // ⚠️ The <source> tags are ordered based on the order of formats in this array.
-      // Keep the most optimised first, and least in the end.
+      // Keep most compatible format at the end. The path of the last format will be populated in 'src' of the fallback <img> tag.
       formats: ["avif", "webp", "jpeg"],
       sizes: "100vw", // Default image `sizes` attribute
       minWidth: 150, // Minimum width to resize an image to
