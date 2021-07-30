@@ -20,19 +20,29 @@ const img2picture = require("eleventy-plugin-img2picture");
 
 module.exports = function (eleventyConfig) {
   // 👋 It's recommended to use the plugin only on production builds.
-  // The plugin works fine on development. Just that, your Eleventy builds will be quite slow.
+  // The plugin works fine on development. Just that, your
+  // Eleventy builds will be quite slow.
   if (process.env.NODE_ENV === "production") {
     eleventyConfig.addPlugin(img2picture, {
-      eleventyInputDir: "", // Eleventy input folder. 🚨 Required
-      imagesOutputDir: "_site", // Output folder for optimized images. 🚨 Required
+      /*
+       * 🚨 Required parameters
+       */
+      eleventyInputDir: "", // Eleventy input folder.
+      imagesOutputDir: "_site", // Output folder for optimized images.
       // URL prefix for images src URLS.
       // It should match with path suffix in `imagesOutputDir`.
       // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
-      urlPath: "", 🚨 Required
+      urlPath: "",
+
+      /*
+       * 🔧 Optional parameters
+       */
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
       // Formats to be generated.
-      // ⚠️ The <source> tags are ordered based on the order of formats in this array.
-      // Keep most compatible format at the end. The path of the last format will be populated in 'src' of the fallback <img> tag.
+      // ⚠️ The <source> tags are ordered based on the order of formats
+      // in this array. Keep most compatible format at the end.
+      // The path of the last format will be populated in
+      // the 'src' attribute of fallback <img> tag.
       formats: ["avif", "webp", "jpeg"],
       sizes: "100vw", // Default image `sizes` attribute
       minWidth: 150, // Minimum width to resize an image to
