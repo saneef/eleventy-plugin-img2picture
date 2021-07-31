@@ -11,7 +11,7 @@ const outputBase = path.join(__dirname, "output", "ignores");
 test.before("Cleanup Output Images", async () => rimraf(outputBase));
 test.after.always("Cleanup Output Images", async () => rimraf(outputBase));
 
-test("Don't optimise image in a file other than HTML", async (t) => {
+test("Don't optimize image in a file other than HTML", async (t) => {
   const input =
     '<img src="/images/sunset-by-bruno-scramgnon.jpg" alt="Sunset">';
   const outputPath = "file.xml";
@@ -26,7 +26,7 @@ test("Don't optimise image in a file other than HTML", async (t) => {
   t.is(result, output);
 });
 
-test("Don't optimise <img> tag with data-img2picture-ignore", async (t) => {
+test("Don't optimize <img> tag with data-img2picture-ignore", async (t) => {
   const input =
     '<img data-img2picture-ignore="true" src="/images/sunset-by-bruno-scramgnon.jpg" alt="Sunset">';
   const outputPath = "file.html";
@@ -40,7 +40,7 @@ test("Don't optimise <img> tag with data-img2picture-ignore", async (t) => {
   t.is(result, output);
 });
 
-test("Don't optimise SVG", async (t) => {
+test("Don't optimize SVG", async (t) => {
   const input = '<img src="/images/nothing.svg" alt="Nothing">';
   const outputPath = "file.html";
   const output = '<img src="/images/nothing.svg" alt="Nothing">';
@@ -52,10 +52,25 @@ test("Don't optimise SVG", async (t) => {
   t.is(result, output);
 });
 
-test("Don't optimise GIF", async (t) => {
+test("Don't optimize GIF", async (t) => {
   const input = '<img src="/images/nothing.gif" alt="Nothing">';
   const outputPath = "file.html";
   const output = '<img src="/images/nothing.gif" alt="Nothing">';
+  const transformer = img2picture({
+    eleventyInputDir: sourcePath,
+    imagesOutputDir: outputBase,
+  });
+  const result = await transformer(input, outputPath);
+  t.is(result, output);
+});
+
+test("Don't fetch and optimize a remote image", async (t) => {
+  const input =
+    '<img src="https://github.com/saneef/eleventy-plugin-img2picture/raw/main/tests/fixtures/images/shapes.png" alt="Shapes">';
+  const outputPath = "file.html";
+  const output =
+    '<img src="https://github.com/saneef/eleventy-plugin-img2picture/raw/main/tests/fixtures/images/shapes.png" alt="Shapes">';
+
   const transformer = img2picture({
     eleventyInputDir: sourcePath,
     imagesOutputDir: outputBase,

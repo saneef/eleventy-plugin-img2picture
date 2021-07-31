@@ -23,7 +23,8 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy-img": "^0.9.0",
-    "cheerio": "^1.0.0-rc.10"
+    "cheerio": "^1.0.0-rc.10",
+    "debug": "^4.3.2"
   },
   "devDependencies": {
     "ava": "^3.15.0",
@@ -46,6 +47,9 @@
     "files": [
       "tests/**/*",
       "!tests/utils.js"
+    ],
+    "ignoredByWatcher": [
+      "tests/output/**"
     ]
   }
 }
