@@ -6,8 +6,9 @@ This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/ch
 
 ## Features
 
-- Drop-in plugin to replace all `<img>` in your website without shortcodes
-- [Ignore image using data attribute](#ignore-images)
+- Drop-in plugin to replace all `<img>` in your website without shortcodes.
+- [Ignore image using data attribute](#ignore-images).
+- Download, cache, and optimize [remote images](#remote-images).
 
 ## Supported Image Formats
 
@@ -20,24 +21,39 @@ const img2picture = require("eleventy-plugin-img2picture");
 
 module.exports = function (eleventyConfig) {
   // 👋 It's recommended to use the plugin only on production builds.
-  // The plugin works fine on development. Just that, your Eleventy builds will be quite slow.
+  // The plugin works fine on development. Just that, your
+  // Eleventy builds will be quite slow.
   if (process.env.NODE_ENV === "production") {
     eleventyConfig.addPlugin(img2picture, {
-      eleventyInputDir: "", // Eleventy input folder. 🚨 Required
-      imagesOutputDir: "_site", // Output folder for optimized images. 🚨 Required
+      /*
+       * 🚨 Required parameters
+       */
+      eleventyInputDir: "", // Eleventy input folder.
+      imagesOutputDir: "_site", // Output folder for optimized images.
       // URL prefix for images src URLS.
       // It should match with path suffix in `imagesOutputDir`.
       // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
-      urlPath: "", 🚨 Required
+      urlPath: "",
+
+      /*
+       * 🔧 Optional parameters
+       */
       extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
       // Formats to be generated.
-      // ⚠️ The <source> tags are ordered based on the order of formats in this array.
-      // Keep most compatible format at the end. The path of the last format will be populated in 'src' of the fallback <img> tag.
+      // ⚠️ The <source> tags are ordered based on the order of formats
+      // in this array. Keep most compatible format at the end.
+      // The path of the last format will be populated in
+      // the 'src' attribute of fallback <img> tag.
       formats: ["avif", "webp", "jpeg"],
       sizes: "100vw", // Default image `sizes` attribute
+
       minWidth: 150, // Minimum width to resize an image to
       maxWidth: 1500, // Maximum width to resize an image to
       widthStep: 150, // Width difference between each resized image
+
+      fetchRemote: false, // When true, remote images are fetched, cached and optimized.
+      dryRun: false, // When true, the optimized images are not generated. Only HTMLs are processed.
+
       // Function used by eleventy-img to generate image filenames
       filenameFormat: function (id, src, width, format) {
         const extension = path.extname(src);
@@ -45,6 +61,9 @@ module.exports = function (eleventyConfig) {
 
         return `${name}-${id}-${width}w.${format}`;
       },
+
+      // Cache options to pass to `eleventy-cache-assets`
+      cacheOptions: {}
 
       // Extra options to pass to the Sharp constructor
       sharpOptions: {},
@@ -68,6 +87,10 @@ Images with `data-img2picture-ignore="true"` or `data-img2picture-ignore` will b
   alt="Sunset"
 />
 ```
+
+### Remote images
+
+Set `fetchRemote: true` in options to download, cache, and optimize remote images. `fetchRemote` is `false` by default. Use [`cacheOptions` passed to `eleventy-cache-assets`](https://www.11ty.dev/docs/plugins/cache/#options) to change cache settings like, cache duration, and path.
 
 ### Attributes on `<img>`
 
