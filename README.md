@@ -44,7 +44,7 @@ module.exports = function (eleventyConfig) {
       // in this array. Keep most compatible format at the end.
       // The path of the last format will be populated in
       // the 'src' attribute of fallback <img> tag.
-      formats: ["avif", "webp", "jpeg"],
+      formats: ["webp", "jpeg"],
       sizes: "100vw", // Default image `sizes` attribute
 
       minWidth: 150, // Minimum width to resize an image to
