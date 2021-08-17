@@ -11,6 +11,7 @@ const baseConfig = {
   eleventyInputDir: sourcePath,
   imagesOutputDir: outputBase,
   urlPath: "/images/",
+  formats: ["avif", "webp", "jpeg"],
   filenameFormat,
   dryRun: true,
 };

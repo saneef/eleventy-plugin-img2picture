@@ -17,6 +17,7 @@ const baseOptions = {
   eleventyInputDir: sourcePath,
   imagesOutputDir: outputBase,
   urlPath: "/images/",
+  formats: ["avif", "webp", "jpeg"],
   filenameFormat,
   fetchRemote: true,
   cacheOptions: {
