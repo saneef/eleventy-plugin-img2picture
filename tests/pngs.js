@@ -16,7 +16,6 @@ test.after.always("Cleanup Output Images", async () => rimraf(outputBase));
 const baseOptions = {
   eleventyInputDir: sourcePath,
   imagesOutputDir: outputBase,
-  formats: ["avif", "webp", "jpeg"],
   urlPath: "/images/",
   filenameFormat,
 };
