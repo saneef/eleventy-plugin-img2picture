@@ -25,7 +25,7 @@ module.exports = function (eleventyConfig) {
   // 👋 It's recommended to use the plugin only on production builds.
   // The plugin works fine on development. Just that, your
   // Eleventy builds will be quite slow.
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.ELEVENTY_ENV === "production") {
     eleventyConfig.addPlugin(img2picture, {
       /*
        * 🚨 Required parameters
