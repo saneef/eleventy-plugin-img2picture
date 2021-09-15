@@ -30,7 +30,7 @@ module.exports = function (eleventyConfig) {
       /*
        * 🚨 Required parameters
        */
-      eleventyInputDir: "", // Eleventy input folder.
+      eleventyInputDir: ".", // Eleventy input folder.
       imagesOutputDir: "_site", // Output folder for optimized images.
       // URL prefix for images src URLS.
       // It should match with path suffix in `imagesOutputDir`.
