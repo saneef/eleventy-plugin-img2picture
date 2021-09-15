@@ -125,8 +125,9 @@ Set `fetchRemote: true` in options to download, cache, and optimize remote image
 ### Attributes on `<img>`
 
 - `class` attribute on `<img>` will be moved to `<picture>`.
-- `src`, `width`, and `height` attributes will be populated based optimized image size.
-- All other attributes on `<img>` will be retained. This let you set custom `sizes`, like `<img src="..." sizes="(min-width: 60em) 75vw, 100vw" alt="..." />`.
+- `sizes` will be hoisted on `<source>` elements.
+- `src`, `width`, and `height` attributes will be replaced with corresponding values based on the optimized image.
+- All other attributes on `<img>` will be retained.
 
 Example:
 
