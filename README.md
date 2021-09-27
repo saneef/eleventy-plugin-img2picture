@@ -98,9 +98,9 @@ module.exports = function (eleventyConfig) {
   // The plugin works fine on development. Just that, your
   // Eleventy builds will be quite slow.
   if (process.env.ELEVENTY_ENV === "production") {
-    eleventyConfig.addPlugin(img2picture, );
+    eleventyConfig.addPlugin(img2picture, img2pictureOptions);
   } else {
-    // During development, you need to copy the files to `_site`
+    // During development, copy the files to Eleventy's `dir.output`
     eleventyConfig.addPassthroughCopy("./images");
   }
 };
