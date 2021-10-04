@@ -18,18 +18,19 @@ This plugin uses [`eleventy-img`](https://www.11ty.dev/docs/plugins/image/) to o
 
 ## Usage
 
-### Quick Start
+### Basic Usage
 
 ```js
 const img2picture = require("eleventy-plugin-img2picture");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(img2picture, {
-    /*
-     * 🚨 Required parameters
-     */
-    eleventyInputDir: ".", // Should be same as Eleventy input folder set using `dir.input`.
-    imagesOutputDir: "_site", // Output folder for optimized images.
+    // Should be same as Eleventy input folder set using `dir.input`.
+    eleventyInputDir: ".",
+
+    // Output folder for optimized images.
+    imagesOutputDir: "_site",
+
     // URL prefix for images src URLS.
     // It should match with path suffix in `imagesOutputDir`.
     // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
@@ -38,73 +39,54 @@ module.exports = function (eleventyConfig) {
 };
 ```
 
-### Advanced
+### Recommended Usage
+
+👋 It's recommended to use the plugin only on production builds (E.g.: `$ ELEVENTY_ENV=production eleventy`). The plugin works fine with [basic usage](#basic-usage). Just that, your Eleventy builds will be quite slow.
 
 ```js
-const img2picture = require("eleventy-plugin-img2picture");
-const path = require("path"); // Used in `filenameFormat` function
-
-const img2pictureOptions = {
-  /*
-   * 🚨 Required parameters
-   */
-  eleventyInputDir: ".", // Should be same as Eleventy input folder set using `dir.input`.
-  imagesOutputDir: "_site", // Output folder for optimized images.
-  // URL prefix for images src URLS.
-  // It should match with path suffix in `imagesOutputDir`.
-  // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
-  urlPath: "",
-
-  /*
-   * 🔧 Optional parameters
-   */
-  extensions: ["jpg", "png", "jpeg"], // File extensions to optmize
-  // Formats to be generated.
-  // ⚠️ The <source> tags are ordered based on the order of formats
-  // in this array. Keep most compatible format at the end.
-  // The path of the last format will be populated in
-  // the 'src' attribute of fallback <img> tag.
-  formats: ["avif", "webp", "jpeg"],
-  sizes: "100vw", // Default image `sizes` attribute
-
-  minWidth: 150, // Minimum width to resize an image to
-  maxWidth: 1500, // Maximum width to resize an image to
-  widthStep: 150, // Width difference between each resized image
-
-  fetchRemote: false, // When true, remote images are fetched, cached and optimized.
-  dryRun: false, // When true, the optimized images are not generated. Only HTMLs are processed.
-
-  // Function used by eleventy-img to generate image filenames
-  filenameFormat: function (id, src, width, format) {
-    const extension = path.extname(src);
-    const name = path.basename(src, extension);
-
-    return `${name}-${id}-${width}w.${format}`;
-  },
-
-  // Cache options to pass to `eleventy-cache-assets`
-  cacheOptions: {}
-
-  // Extra options to pass to the Sharp constructor
-  sharpOptions: {},
-  sharpWebpOptions: {},
-  sharpPngOptions: {},
-  sharpJpegOptions: {},
-  sharpAvifOptions: {},
-};
-
 module.exports = function (eleventyConfig) {
-  // 👋 It's recommended to use the plugin only on production builds.
-  // The plugin works fine on development. Just that, your
-  // Eleventy builds will be quite slow.
   if (process.env.ELEVENTY_ENV === "production") {
-    eleventyConfig.addPlugin(img2picture, img2pictureOptions);
+    eleventyConfig.addPlugin(img2picture, {
+      // Should be same as Eleventy input folder set using `dir.input`.
+      eleventyInputDir: ".",
+
+      // Output folder for optimized images.
+      imagesOutputDir: "_site",
+
+      // URL prefix for images src URLS.
+      // It should match with path suffix in `imagesOutputDir`.
+      // Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`
+      urlPath: "",
+    });
   } else {
     // During development, copy the files to Eleventy's `dir.output`
     eleventyConfig.addPassthroughCopy("./images");
   }
 };
 ```
+
+### Options
+
+| Name             | Type       | Default                                                                                                                                             | Description                                                                                                                                                                                                                                       |
+| ---------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| eleventyInputDir | `string`   |                                                                                                                                                     | 🚨 Required<br><br>Eleventy input directory. Should be same as Eleventy’s `dir.input`.                                                                                                                                                            |
+| imagesOutputDir  | `string`   |                                                                                                                                                     | 🚨 Required<br><br>Output folder for optimized images.                                                                                                                                                                                            |
+| urlPath          | `string`   |                                                                                                                                                     | 🚨 Required<br><br>URL prefix for images src URLS. It should match with path suffix in `imagesOutputDir`. Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`                                                               |
+| extensions       | `array`    | `["jpg", "png", "jpeg"]`                                                                                                                            | File extensions to optmize.                                                                                                                                                                                                                       |
+| formats          | `array`    | `["avif", "webp", "jpeg"]`                                                                                                                          | Formats to be generated.<br><br>⚠️ The <source> tags are ordered based on the order of formats in this array. Keep most compatible format at the end. The path of the last format will be populated in the 'src' attribute of fallback <img> tag. |
+| sizes            | `string`   | `"100vw"`                                                                                                                                           | Default image `sizes` attribute                                                                                                                                                                                                                   |
+| minWidth         | `number`   | `150`                                                                                                                                               | Minimum image width to be generated                                                                                                                                                                                                               |
+| maxWidth         | `number`   | `1500`                                                                                                                                              | Maximum image width to be generated                                                                                                                                                                                                               |
+| widthStep        | `number`   | `150`                                                                                                                                               | Width increments between each generated image                                                                                                                                                                                                     |
+| fetchRemote      | `boolean`  | `false`                                                                                                                                             | Fetch, cache, and optimize remote images.                                                                                                                                                                                                         |
+| dryRun           | `boolean`  | `false`                                                                                                                                             | Don't generate image files. Only HTML tags are generated.                                                                                                                                                                                         |
+| filenameFormat   | `function` | [`filenameFormatter()`](https://github.com/saneef/eleventy-plugin-img2picture/blob/b56ff9c3785700e68e37f2a1ed1a9ea12744ad73/lib/img2picture.js#L85) | Function used by eleventy-img to generate image filenames.                                                                                                                                                                                        |
+| cacheOptions     | `object`   | `{}`                                                                                                                                                | Cache options passed to [`eleventy-cache-assets`](https://www.11ty.dev/docs/plugins/cache/).                                                                                                                                                      |
+| sharpOptions     | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp constructor](https://sharp.pixelplumbing.com/api-constructor#parameters).                                                                                                                                                |
+| sharpWebpOptions | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter] for webp(https://sharp.pixelplumbing.com/api-output#webp).                                                                                                                                       |
+| sharpPngOptions  | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter for png](https://sharp.pixelplumbing.com/api-output#png).                                                                                                                                         |
+| sharpJpegOptions | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter for jpeg](https://sharp.pixelplumbing.com/api-output#jpeg).                                                                                                                                       |
+| sharpAvifOptions | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter for avif](https://sharp.pixelplumbing.com/api-output#avif).                                                                                                                                       |
 
 ### Ignore Images
 
