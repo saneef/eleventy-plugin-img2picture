@@ -123,7 +123,7 @@ You can provide a comma separated list of widths using `data-img2picture-widths`
 />
 ```
 
-Example:
+### Example
 
 ```html
 <img
