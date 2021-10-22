@@ -88,7 +88,18 @@ module.exports = function (eleventyConfig) {
 | sharpJpegOptions | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter for jpeg](https://sharp.pixelplumbing.com/api-output#jpeg).                                                                                                                                       |
 | sharpAvifOptions | `object`   | `{}`                                                                                                                                                | Options passed to [Sharp image format converter for avif](https://sharp.pixelplumbing.com/api-output#avif).                                                                                                                                       |
 
-### Ignore Images
+### Remote images
+
+Set `fetchRemote: true` in options to download, cache, and optimize remote images. `fetchRemote` is `false` by default. Use [`cacheOptions` passed to `eleventy-cache-assets`](https://www.11ty.dev/docs/plugins/cache/#options) to change cache settings like, cache duration, and path.
+
+### Attributes on `<img>`
+
+- `class` attribute on `<img>` will be moved to `<picture>`.
+- `sizes` will be hoisted on `<source>` elements.
+- `src`, `width`, and `height` attributes will be replaced with corresponding values based on the optimized image.
+- All other attributes on `<img>` will be retained.
+
+#### Ignore Images
 
 Images with `data-img2picture-ignore="true"` or `data-img2picture-ignore` will be ignored by the plugin.
 
@@ -100,16 +111,17 @@ Images with `data-img2picture-ignore="true"` or `data-img2picture-ignore` will b
 />
 ```
 
-### Remote images
+#### Specify widths on `<img>`
 
-Set `fetchRemote: true` in options to download, cache, and optimize remote images. `fetchRemote` is `false` by default. Use [`cacheOptions` passed to `eleventy-cache-assets`](https://www.11ty.dev/docs/plugins/cache/#options) to change cache settings like, cache duration, and path.
+You can provide a comma separated list of widths using `data-img2picture-widths`. This will override default widths computed from config (`minWidth`, `maxWidth`, and `widthStep`) for a particular `<img>`.
 
-### Attributes on `<img>`
-
-- `class` attribute on `<img>` will be moved to `<picture>`.
-- `sizes` will be hoisted on `<source>` elements.
-- `src`, `width`, and `height` attributes will be replaced with corresponding values based on the optimized image.
-- All other attributes on `<img>` will be retained.
+```html
+<img
+  data-img2picture-widths="200,400,600,800"
+  src="/images/sunset-by-bruno-scramgnon.jpg"
+  alt="Sunset"
+/>
+```
 
 Example:
 

@@ -61,3 +61,15 @@ test("Retain all data attributes on <img>", async (t) => {
   const result = await transformer(input, outputPath);
   t.is(result, output);
 });
+
+test("Generate image sizes based on data-img2picture-widths", async (t) => {
+  const input =
+    '<img src="/images/shapes.png" alt="Shapes" data-img2picture-widths="100,150,200,250,300">';
+  const outputPath = "file.html";
+  const output =
+    '<picture><source type="image/avif" srcset="/images/shapes-100w.avif 100w, /images/shapes-150w.avif 150w, /images/shapes-200w.avif 200w, /images/shapes-250w.avif 250w, /images/shapes-300w.avif 300w" sizes="100vw"><source type="image/webp" srcset="/images/shapes-100w.webp 100w, /images/shapes-150w.webp 150w, /images/shapes-200w.webp 200w, /images/shapes-250w.webp 250w, /images/shapes-300w.webp 300w" sizes="100vw"><source type="image/jpeg" srcset="/images/shapes-100w.jpeg 100w, /images/shapes-150w.jpeg 150w, /images/shapes-200w.jpeg 200w, /images/shapes-250w.jpeg 250w, /images/shapes-300w.jpeg 300w" sizes="100vw"><img src="/images/shapes-200w.jpeg" width="300" height="300" alt="Shapes" loading="lazy" decoding="async"></picture>';
+
+  const transformer = img2picture(baseConfig);
+  const result = await transformer(input, outputPath);
+  t.is(result, output);
+});
