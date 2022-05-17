@@ -22,21 +22,21 @@
   "author": "Saneef Ansari <hello@saneef.com> (https://saneef.com/)",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy-img": "^2.0.0",
+    "@11ty/eleventy-img": "^2.0.1",
     "cheerio": "^1.0.0-rc.10",
     "debug": "^4.3.4"
   },
   "devDependencies": {
-    "ava": "^3.15.0",
-    "eslint": "^8.11.0",
+    "ava": "^4.2.0",
+    "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-xo-space": "^0.32.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "image-size": "^1.0.1",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^12.4.1",
     "nyc": "^15.1.0",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2"
   },
   "lint-staged": {
