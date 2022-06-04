@@ -77,6 +77,8 @@ module.exports = function (eleventyConfig) {
 | sizes            | `string`   | `"100vw"`                                                                                                                                           | Default image `sizes` attribute                                                                                                                                                                                                                   |
 | minWidth         | `number`   | `150`                                                                                                                                               | Minimum image width to be generated                                                                                                                                                                                                               |
 | maxWidth         | `number`   | `1500`                                                                                                                                              | Maximum image width to be generated                                                                                                                                                                                                               |
+| hoistImgClass    | `boolean`  | `false`                                                                                                                                             | Move `class` attribute on `<img>` element to enclosing `<picture>` element.                                                                                                                                                                       |
+| pictureClass     | `string`   | ""                                                                                                                                                  | Class attribute for the newly created `<picture>` elements                                                                                                                                                                                        |
 | widthStep        | `number`   | `150`                                                                                                                                               | Width increments between each generated image                                                                                                                                                                                                     |
 | fetchRemote      | `boolean`  | `false`                                                                                                                                             | Fetch, cache, and optimize remote images.                                                                                                                                                                                                         |
 | dryRun           | `boolean`  | `false`                                                                                                                                             | Don't generate image files. Only HTML tags are generated.                                                                                                                                                                                         |
@@ -118,6 +120,18 @@ You can provide a comma separated list of widths using `data-img2picture-widths`
 ```html
 <img
   data-img2picture-widths="200,400,600,800"
+  src="/images/sunset-by-bruno-scramgnon.jpg"
+  alt="Sunset"
+/>
+```
+
+#### Specify `class` for enclosing `<picture>` tags through `<img>`
+
+You can provide class attribute for the enclosing `<picture>` using `data-img2picture-picture-class` data attribute. This will override the class provided using `pictureClass` option.
+
+```html
+<img
+  data-img2picture-picture-class="w-full"
   src="/images/sunset-by-bruno-scramgnon.jpg"
   alt="Sunset"
 />
