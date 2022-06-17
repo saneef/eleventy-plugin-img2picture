@@ -207,6 +207,12 @@ You can provide class attribute for the enclosing `<picture>` using `data-img2pi
 /></picture>
 ```
 
-## Why is this plugin different from others?
+## FAQs
+
+### How to pick the right `sizes`?
+
+I highly recommend to use the magical [respimagelint - Linter for Responsive Images](https://ausi.github.io/respimagelint/) by [Martin Auswöger](https://twitter.com/ausi).
+
+### How is this plugin different from others?
 
 Plugins like [`eleventy-plugin-respimg`](https://www.npmjs.com/package/eleventy-plugin-respimg), and [`eleventy-plugin-images-responsiver`](https://github.com/nhoizey/images-responsiver/tree/main/packages/eleventy-plugin-images-responsiver/) utilizes shortcodes or attributes to optimize images. The `eleventy-plugin-img2picture` doesn't rely on shortcode. It optimizes all `<img>` matching the file extensions. You can exclude `<img>` using data attribute `data-img2picture-ignore`.
