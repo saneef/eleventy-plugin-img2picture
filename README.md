@@ -11,6 +11,7 @@ Requires Node 12+
 - Drop-in plugin to replace all `<img>` in your website without shortcodes.
 - [Ignore image using data attribute](#ignore-images).
 - Download, cache, and optimize [remote images](#remote-images).
+- Skip processing unchanged and already existing images in the output directory. See [disk cache](#disk-cache).
 
 ## Supported Image Formats
 
@@ -135,6 +136,10 @@ You can provide class attribute for the enclosing `<picture>` using `data-img2pi
   alt="Sunset"
 />
 ```
+
+### Disk Cache
+
+Disk cache is a feature provided by the [`eleventy-img` plugin](https://www.11ty.dev/docs/plugins/image/). This plugin will skip unchanged, and already existing images in the output path. If you don't delete generated image between builds, you'll get faster builds. [This sample project](https://github.com/11ty/demo-eleventy-img-netlify-cache) shows how to persist disk cache across Netlify builds.
 
 ### Example
 
