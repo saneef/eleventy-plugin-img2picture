@@ -4,7 +4,7 @@ Eleventy plugin to replace `<img>` using `<picture>` with resized and optimized 
 
 This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/chromeos/static-site-scaffold-modules/tree/main/modules/eleventy-plugin-local-respimg) by [Sam Richard](https://twitter.com/Snugug/).
 
-Requires Node 12+
+Requires **Node 14.15+**.
 
 ## Features
 
