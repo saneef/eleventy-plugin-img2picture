@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "eslint lib/**.js tests/**.js",
-    "test": "nyc ava --timeout=1m -v --color",
+    "test": "ava --timeout 1m --no-worker-threads",
     "prepare": "husky install"
   },
   "keywords": [
@@ -35,7 +35,6 @@
     "husky": "^8.0.3",
     "image-size": "^1.0.2",
     "lint-staged": "^13.1.0",
-    "nyc": "^15.1.0",
     "prettier": "^2.8.3",
     "rimraf": "^4.1.2"
   },
@@ -44,6 +43,7 @@
     "*.{js,md,json}": "prettier --write"
   },
   "ava": {
+    "failFast": false,
     "files": [
       "tests/**/*",
       "!tests/utils.js"
