@@ -6,6 +6,29 @@ This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/ch
 
 Requires **Node 14.15+**.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Features](#features)
+- [Supported Image Formats](#supported-image-formats)
+- [Usage](#usage)
+  - [Basic Usage](#basic-usage)
+  - [Recommended Usage](#recommended-usage)
+  - [Options](#options)
+  - [Remote images](#remote-images)
+  - [Attributes on `<img>`](#attributes-on-img)
+    - [Ignore Images](#ignore-images)
+    - [Specify widths on `<img>`](#specify-widths-on-img)
+    - [Specify `class` for enclosing `<picture>` tags through `<img>`](#specify-class-for-enclosing-picture-tags-through-img)
+  - [Disk Cache](#disk-cache)
+  - [Example](#example)
+- [FAQs](#faqs)
+  - [How to pick the right `sizes`?](#how-to-pick-the-right-sizes)
+  - [How is this plugin different from others?](#how-is-this-plugin-different-from-others)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Features
 
 - Drop-in plugin to replace all `<img>` in your website without shortcodes.

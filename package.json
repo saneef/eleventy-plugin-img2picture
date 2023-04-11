@@ -24,7 +24,8 @@
   "dependencies": {
     "@11ty/eleventy-img": "^3.1.0",
     "cheerio": "^1.0.0-rc.12",
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "doctoc": "^2.2.1"
   },
   "devDependencies": {
     "ava": "^5.2.0",
@@ -40,7 +41,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
-    "*.{js,md,json}": "prettier --write"
+    "*.{js,md,json}": "prettier --write",
+    "*.md": "doctoc --title '## Table of Contents'"
   },
   "ava": {
     "failFast": false,
