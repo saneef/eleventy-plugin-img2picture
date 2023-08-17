@@ -1,6 +1,6 @@
 const path = require("path");
 const test = require("ava");
-const rimraf = require("rimraf");
+const { rimraf } = require("rimraf");
 const imageSize = require("image-size");
 
 const img2picture = require("../lib/img2picture.js");
@@ -38,10 +38,10 @@ test("Fetch a remote image, generates AVIF, WebP, JPEG formats, and puts them in
   t.is(result, output);
 
   const { width: smallestWebPWidth } = imageSize(
-    path.join(outputBase, "shapes-150w.webp")
+    path.join(outputBase, "shapes-150w.webp"),
   );
   const { width: largestWebPWidth } = imageSize(
-    path.join(outputBase, "shapes-1350w.webp")
+    path.join(outputBase, "shapes-1350w.webp"),
   );
 
   t.is(smallestWebPWidth, 150);

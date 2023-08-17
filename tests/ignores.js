@@ -1,6 +1,6 @@
 const path = require("path");
 const test = require("ava");
-const rimraf = require("rimraf");
+const { rimraf } = require("rimraf");
 
 const img2picture = require("../lib/img2picture.js");
 
