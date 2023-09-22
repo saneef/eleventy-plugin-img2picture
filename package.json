@@ -22,7 +22,7 @@
   "author": "Saneef Ansari <hello@saneef.com> (https://saneef.com/)",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy-img": "^3.1.0",
+    "@11ty/eleventy-img": "^3.1.1",
     "cheerio": "^1.0.0-rc.12",
     "debug": "^4.3.4",
     "doctoc": "^2.2.1"
