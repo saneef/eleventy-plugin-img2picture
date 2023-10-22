@@ -6,7 +6,7 @@ module.exports = {
   /**
    * Plugin config function
    *
-   * @param      {Object}  eleventy     The eleventy configuration object
+   * @param      {object}  eleventy     The eleventy configuration object
    * @param      {Img2PictureOptions=}       The options
    */
   configFunction(eleventy, options) {
