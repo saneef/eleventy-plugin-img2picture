@@ -8,6 +8,7 @@
     "url": "git+https://github.com:saneef/eleventy-plugin-img2picture.git"
   },
   "scripts": {
+    "lint": "eslint lib/**/*.js tests/**/*.js",
     "test": "ava --timeout 1m --no-worker-threads",
     "prepare": "husky install"
   },
