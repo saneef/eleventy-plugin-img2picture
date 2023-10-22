@@ -3,3 +3,4 @@ package-lock.json
 .nyc_output
 .eslintcache
 tests/output
+.cache
