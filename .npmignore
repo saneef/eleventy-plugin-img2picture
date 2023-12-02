@@ -2,6 +2,9 @@
 .eslintcache
 .eslintrc.js
 .github/
+.gitattributes
 .husky/pre-commit
 .nyc_output
 tests
+lib/**/*.test.js
+prettier.config.js
