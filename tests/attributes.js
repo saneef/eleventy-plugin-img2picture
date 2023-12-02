@@ -24,6 +24,15 @@ test('Retain alt=""', async (t) => {
   t.snapshot(result);
 });
 
+test('Add alt="", if missing', async (t) => {
+  const input = '<img src="/images/shapes.png">';
+  const outputPath = "file.html";
+
+  const transformer = img2picture(baseConfig);
+  const result = await transformer(input, outputPath);
+  t.snapshot(result);
+});
+
 test("Don't hoist 'class' from <img> on <picture> when 'hoistImgClass=false", async (t) => {
   const input = '<img class="w-full" src="/images/shapes.png" alt="Shapes">';
   const outputPath = "file.html";
