@@ -3,6 +3,7 @@
   "version": "5.0.0",
   "description": "Eleventy plugin to replace <img> using <picture> with resized and optimized images.",
   "main": ".eleventy.js",
+  "funding": "https://github.com/sponsors/saneef/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com:saneef/eleventy-plugin-img2picture.git"
