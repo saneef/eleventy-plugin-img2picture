@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy-img": "^6.0.2",
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "^1.0.0",
     "debug": "^4.3.4",
     "entities": "^4.5.0"
   },
