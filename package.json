@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-img2picture",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Eleventy plugin to replace <img> using <picture> with resized and optimized images.",
   "main": ".eleventy.js",
   "funding": "https://github.com/sponsors/saneef/",
