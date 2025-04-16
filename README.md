@@ -4,11 +4,10 @@ Eleventy plugin to replace `<img>` using `<picture>` with resized and optimized 
 
 This plugin is inspired by [eleventy-plugin-local-respimg](https://github.com/chromeos/static-site-scaffold-modules/tree/main/modules/eleventy-plugin-local-respimg) by [Sam Richard](https://twitter.com/Snugug/).
 
-Requires **Node 14.15+**.
+Requires **Node v18.17+**.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Features](#features)
@@ -99,7 +98,7 @@ module.exports = function (eleventyConfig) {
 | urlPath            | `string`            |                                                                                                                                                     | 🚨 Required<br><br>URL prefix for images src URLS. It should match with path suffix in `imagesOutputDir`. Eg: imagesOutputDir with `_site/images` likely need urlPath as `/images/`                  |
 | extensions         | `array`             | `["jpg", "png", "jpeg", "svg"]`                                                                                                                     | File extensions to optmize.                                                                                                                                                                          |
 | formats            | `array`             | `["avif", "webp", "svg", "jpeg"]`                                                                                                                   | Formats to be generated.<br><br>⚠️ The <source> tags are ordered based on the order of formats in this array. Keep most compatible format at the end.                                                |
-| sizes              | `string`            | `"100vw"`                                                                                                                                           | Default image [`sizes`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes) attribute                                                                                          |
+| sizes              | `string`            | `"100vw"`                                                                                                                                           | Default image [`sizes`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes) attribute                                                                                               |
 | minWidth           | `number`            | `150`                                                                                                                                               | Minimum image width to be generated                                                                                                                                                                  |
 | maxWidth           | `number`            | `1500`                                                                                                                                              | Maximum image width to be generated                                                                                                                                                                  |
 | hoistImgClass      | `boolean`           | `false`                                                                                                                                             | Move `class` attribute on `<img>` element to enclosing `<picture>` element.                                                                                                                          |
