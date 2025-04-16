@@ -21,7 +21,7 @@ const baseOptions = {
   formats: ["avif", "webp", "svg", "jpeg"],
 };
 
-test("Optimizes SVG image, generates AVIF, WebP, SVG, JPEG formats, and puts them in <picture>", async (t) => {
+test("Optimizes SVG image, generates AVIF, WebP, SVG formats, and puts them in <picture>", async (t) => {
   const input =
     '<img src="/images/Ghostscript_Tiger.svg" alt="Ghostscript Tiger">';
   const outputPath = "file.html";
@@ -38,10 +38,10 @@ test("Optimizes SVG image, generates AVIF, WebP, SVG, JPEG formats, and puts the
   t.true(existsSync(svgFilePath));
 
   const { width: smallestImgWidth } = imageSize(
-    path.join(imagesOutputDir, "Ghostscript_Tiger-150w.jpeg"),
+    path.join(imagesOutputDir, "Ghostscript_Tiger-150w.webp"),
   );
   const { width: largestImgWidth } = imageSize(
-    path.join(imagesOutputDir, "Ghostscript_Tiger-1350w.jpeg"),
+    path.join(imagesOutputDir, "Ghostscript_Tiger-1350w.webp"),
   );
 
   t.is(smallestImgWidth, 150);
