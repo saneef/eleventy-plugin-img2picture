@@ -1,3 +1,8 @@
+> [!WARNING]
+> This plugin has been sunsetted. Use the official [Eleventy Image plugin](https://www.11ty.dev/docs/plugins/image/#html-transform) instead.
+>
+> Read [the post](https://saneef.com/blog/sunsets-eleventy-plugin-img2picture/) for steps to migrate to the Eleventy Image plugin.
+
 # eleventy-plugin-img2picture
 
 Eleventy plugin to replace `<img>` using `<picture>` with resized and optimized images.
